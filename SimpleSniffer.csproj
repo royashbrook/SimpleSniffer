@@ -3,6 +3,16 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
+    <PublishSingleFile>true</PublishSingleFile>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <Version>1.0.1.0</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Company>RoyAshbrook</Company>
+    <Authors>RoyAshbrook</Authors>
+    <Product>SimpleSniffer by RoyAshbrook</Product>
+    <Description>A very simple sniffer program for windows</Description>
+    <Copyright>Copyright © 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
