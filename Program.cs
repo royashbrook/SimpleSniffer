@@ -17,11 +17,23 @@ namespace SimpleSniffer
         static void Main()
         {
             
+            // Admin rights required
+            if(!AdminCheck.isElevated()){
+                Console.WriteLine("\n\nAdmin Rights are required to access Raw Sockets.\n\nRun from an Admin Session or Right click file and 'Run As Administrator'\n\nExiting!\n\n");
+                System.Environment.Exit(5);//exit code for insufficient permissions, https://docs.microsoft.com/en-us/windows/win32/debug/system-error-codes--0-499-
+            }
+
             // Get local IPv4 Addresses
             var IPv4Addresses = Dns.GetHostEntry(Dns.GetHostName())
                 .AddressList.Where(al => al.AddressFamily == AddressFamily.InterNetwork)
                 .AsEnumerable();
             
+            // Exit if no IPv4 Addresses to sniff
+            if(IPv4Addresses.Count() == 0){
+                Console.WriteLine("\n\nNo IPv4 Addresses to bind to.\n\nNothing to Sniff.\n\nExiting!\n\n");
+                System.Environment.Exit(59);//exit code for unexpected network error, https://docs.microsoft.com/en-us/windows/win32/debug/system-error-codes--0-499-
+            }
+
             // Header Row
             Console.WriteLine(RowHeader);
             
